@@ -10,9 +10,9 @@ const func = (data, callback) => {
     data.lang = 'java_script'
     data.err = err
     data.res = res
+    callback(data);
     client.end()
   })
-  callback(data);
 };
 
 module.exports = (data, callback) => {
