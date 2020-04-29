@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GrigurkoAlexey/git-call-test-repo/issues"
   },
-  "homepage": "https://github.com/GrigurkoAlexey/git-call-test-repo#readme"
+  "homepage": "https://github.com/GrigurkoAlexey/git-call-test-repo#readme",
+  "dependencies": {
+    "pg": "^8.0.3"
+  }
 }
