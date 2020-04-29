@@ -10,6 +10,6 @@ function handle($data) {
     $response = $client->request('GET', 'https://reqres.in/api/users?page=1');
     
     $data['lang'] = 'php';
-    $data['res'] = $response->getBody();
+    $data['res'] = json_decode($response->getBody(), true);
     return $data;
 }
