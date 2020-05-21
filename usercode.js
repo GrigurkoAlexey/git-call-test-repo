@@ -18,6 +18,8 @@ const func = async (data) => {
     return data
 };
 
-module.exports = async (data) => {
-  await func(data);
+module.exports = (data) => {
+  func(data).then(data => {
+    return data
+  });
 };
