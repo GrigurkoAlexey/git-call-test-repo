@@ -1,7 +1,7 @@
 const https = require('https');
 
 const func = async (data) => {
-  return new Promise(resolve, () => {
+  return new Promise(resolve => {
     https
     .get('https://reqres.in/api/users?page=1', (resp) => {
       let body = '';
