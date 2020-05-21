@@ -1,5 +1,10 @@
-module.exports = (data) => {
-  data.hello = "Hello World!";
+const https = require('https');
 
-  return data;
+const func = (data) => {
+  data.foo = 'hello'
+  return data
+};
+
+module.exports = (data) => {
+  func(data)
 };
