@@ -1,39 +1,27 @@
 package main
 
 import (
-  "context"
-  "github.com/corezoid/gitcall-go-runner/gitcall"
-  "gopkg.in/h2non/gentleman.v2"
-)
+	"context"
+	"net/http"
 
-type Response struct {
-  ResponseCode int
-  ResponseBody string
-  URL string
-}
+	"github.com/corezoid/gitcall-go-runner/gitcall"
+)
 
 func usercode(ctx context.Context, data map[string]interface{}) error {
 
-  var respons = Response{}
-  cli := gentleman.New()
+	client := http.Client{}
+	res, err := client.Get("https://reqres.in/api/users?page=1")
+	if err != nil {
+		return err
+	}
+	defer res.Body.Close()
 
-  cli.URL("https://reqres.in/api/users?page=1")
-  cli.Method("GET")
-  req := cli.Request()
-
-  res, err := req.Send()
-
-  if err != nil {
-	return err;
-  }
-
-  respons.ResponseBody = res.String()
-  respons.ResponseCode = res.StatusCode
-  respons.URL = res.RawRequest.URL.String()
-
-  data["lang"] = "go_lang"
-  data["res"] = respons
-  return nil
+	data["res"] = map[string]interface{}{
+		"code": res.StatusCode,
+		"body": res.String(),
+		"url":  res.RawRequest.URL.String(),
+	}
+	return nil
 }
 
 func main() {
