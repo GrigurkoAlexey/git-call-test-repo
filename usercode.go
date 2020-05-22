@@ -18,7 +18,7 @@ func usercode(ctx context.Context, data map[string]interface{}) error {
 
 	data["res"] = map[string]interface{}{
 		"code": res.StatusCode,
-		"body": res.Body.Read
+		"body": res.Body.Read,
 	}
 	return nil
 }
