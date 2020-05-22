@@ -16,7 +16,7 @@ func usercode(ctx context.Context, data map[string]interface{}) error {
 	}
 	defer res.Body.Close()
 
-	data["res"] = res.StatusCode
+	data["res"] = res.Body
 	return nil
 }
 
