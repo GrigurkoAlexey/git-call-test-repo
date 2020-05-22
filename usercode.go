@@ -18,7 +18,7 @@ func usercode(ctx context.Context, data map[string]interface{}) error {
 
 	data["res"] = map[string]interface{}{
 		"code": res.StatusCode,
-		"body": res.String(),
+		"body": res.Body.Read
 		"url":  res.RawRequest.URL.String(),
 	}
 	return nil
