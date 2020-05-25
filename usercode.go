@@ -15,11 +15,13 @@ func usercode(ctx context.Context, data map[string]interface{}) error {
 	if err != nil {
 		return err
 	}
-	defer res.Body.Close()
+  defer res.Body.Close()
+  
+  var response map[string]interface = json.NewDecoder(res.Body)
 
 	data["res"] = map[string]interface{}{
 		"code": res.StatusCode,
-		"body": json.NewDecoder(res.Body).Decode(),
+		"body": Decode(response),
 	}
 	return nil
 }
