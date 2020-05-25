@@ -19,7 +19,8 @@ func usercode(ctx context.Context, data map[string]interface{}) error {
 
 	var response map[string]interface{}
 
-	json.NewDecoder(res.Body).Decode(response)
+	dec := json.NewDecoder(res.Body)
+	dec.Decode(response)
 
 	data["res"] = map[string]interface{}{
 		"code": res.StatusCode,
