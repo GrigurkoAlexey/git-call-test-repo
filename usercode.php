@@ -1,15 +1,21 @@
 <?php
 
 require 'vendor/autoload.php';
-use GuzzleHttp\Client;
+
 
 function handle($data) {
+    $dbconn = pg_connect($data.url);
+    if (!$dbconn) {
+        $data['err'] = pg_last_error();
+        return $data;
+    }
 
-    $client = new Client();
+    $res = pg_query($dbconn, $data.query);
+    if(!$res) {
+        $data['err'] = pg_last_error();
+        return $data;
+    }
 
-    $response = $client->request('GET', 'https://reqres.in/api/users?page=1');
-    
-    $data['lang'] = 'php';
-    $data['res'] = $response->getBody();
+    $data['res'] = $res;
     return $data;
 }
