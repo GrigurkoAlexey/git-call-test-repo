@@ -8,7 +8,7 @@ import (
 
 func usercode(_ context.Context, data map[string]interface{}) error {
 
-	data["hello"] = "Hello world!"
+	data["hello"] = "Hello rebuild!"
 
 	return nil
 }
