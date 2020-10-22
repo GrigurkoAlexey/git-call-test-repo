@@ -1,6 +1,6 @@
 const fs = require('fs')
 
 module.exports = async (data) => {
-    data.body = "Hello Rebuild!";
+    data.body = "Hello World!";
     return data;
 }; 
