@@ -1,3 +1,3 @@
 def handle(data):
-    data["body"] = "Hello World!"
+    data["body"] = "Hello Rebuild!"
     return data
